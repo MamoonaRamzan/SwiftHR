@@ -4,9 +4,12 @@ import 'package:swift_hr/Screens/Components/CutomButton.dart';
 import 'package:swift_hr/Screens/Components/HeadingText.dart';
 import 'package:swift_hr/Screens/Components/HexColor.dart';
 import 'package:swift_hr/Screens/Components/PasswordField.dart';
+import 'package:swift_hr/Screens/forgetPasswordScreen.dart';
 class Sign_In extends StatelessWidget {
   const Sign_In({super.key});
+void signIn(BuildContext context){
 
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,15 +89,20 @@ class Sign_In extends StatelessWidget {
                                 padding: const EdgeInsets.only(top: 5,bottom: 5),
                                 child: Container(
                                   alignment: Alignment.bottomRight,
-                                  child: Text("forgot password?",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
+                                  child: InkWell(
+                                    onTap: (){
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>ForgotPasswordScreen()));
+                                    },
+                                    child: Text("forgot password?",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                              CustomButton(btnText: "Sign In")
+                              CustomButton(btnText: "Sign In",onPressed: signIn,)
               
                             ],
                           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swift_hr/Screens/signIn.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -11,21 +12,26 @@ class SplashScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: Image.asset(
-                'assets/images/Splash/Ellipse2.png',
-                fit: BoxFit.contain,
+                  "assets/images/Ellipse2.png",
+                  fit: BoxFit.contain,
+                ),
               ),
-            ),
             Image.asset(
-              'assets/images/Splash/Ellipse1.png',
+              'assets/images/Ellipse1.png',
               fit: BoxFit.contain,
             ),
-            Text(
-              'SwiftHR',
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w600,
-                fontSize: 24,
-                color: Colors.white,
+            InkWell(
+              onTap: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>Sign_In()));
+              },
+              child: Text(
+                'SwiftHR',
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 24,
+                  color: Colors.white,
+                ),
               ),
             ),
           ],

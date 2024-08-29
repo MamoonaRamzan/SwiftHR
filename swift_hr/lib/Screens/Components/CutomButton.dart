@@ -1,34 +1,53 @@
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
+class CustomButton extends StatefulWidget {
   final String btnText;
-  CustomButton({required this.btnText});
+  final ContextCallback onPressed;
+  CustomButton({required this.btnText,required this.onPressed});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      width: 265,
-      child: ElevatedButton(
-        onPressed: () {
+  State<CustomButton> createState() => _CustomButtonState();
+}
 
-        },
-        style: ElevatedButton.styleFrom(
-          //padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+class _CustomButtonState extends State<CustomButton> {
+  bool _isHovered = false;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: MouseRegion(
+        onEnter: (_) => _onHover(true),
+        onExit: (_) => _onHover(false),
+        child: ElevatedButton(
+          onPressed: (){
+            _onHover(true);
+            _isHovered ? Colors.black : Color(0xFF4DB6AC);
+            widget.onPressed(context);
+          },
+          style: ElevatedButton.styleFrom(
+            fixedSize: Size(260, 50),
+            padding: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            primary: _isHovered ? Colors.black : Color(0xFF4DB6AC),
           ),
-          primary: Color(0xFF4DB6AC),
-        ),
-        child: Text(
-          btnText,
-          style: TextStyle(
-            fontFamily: 'Roboto',
-            fontSize: 16,
-            color: Colors.white,
+          child: Text(
+            widget.btnText,
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              fontSize: 16,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
     );
   }
+
+  void _onHover(bool isHovered) {
+    setState(() {
+      _isHovered = isHovered;
+    });
+  }
 }
+typedef ContextCallback = void Function(BuildContext);

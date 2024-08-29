@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:swift_hr/Screens/forgetPasswordScreen.dart';
+import 'package:swift_hr/Screens/otpVerificationScreen.dart';
 import 'package:swift_hr/Screens/resetPassword.dart';
 import 'package:swift_hr/Screens/signIn.dart';
 import 'package:swift_hr/Screens/splashScreen.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swift_hr/Screens/Components/PasswordField.dart';
+import 'package:swift_hr/Screens/splashScreen.dart';
 
 import 'Components/CustomTextField.dart';
 import 'Components/CutomButton.dart';
@@ -7,7 +8,14 @@ import 'Components/HeadingText.dart';
 import 'Components/HexColor.dart';
 class Reset_password extends StatelessWidget {
   const Reset_password({super.key});
-
+  void _navigateToNextScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>SplashScreen(),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +87,7 @@ class Reset_password extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(top: 25,bottom: 10),
                               ),
-                              CustomButton(btnText: "Sign In")
+                              CustomButton(btnText: "Confirm New Password",onPressed:_navigateToNextScreen)
                             ],
                           ),
                         ),
